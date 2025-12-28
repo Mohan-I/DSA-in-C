@@ -1,0 +1,118 @@
+This program is a classic demonstration of **process creation** in Unix-like systems using the `fork()` system call. As a programmer, you’ll recognize this as the fundamental way a single execution thread splits into two independent processes.
+
+### How it Works
+
+When `fork()` is called, the operating system creates a nearly identical copy of the calling process. From that point forward, **both** processes execute the next line of code simultaneously, but they live in separate memory spaces.
+
+Here is the breakdown of the logic:
+
+| Return Value of `fork()` | Meaning | Execution Path |
+| --- | --- | --- |
+| **Negative (`< 0`)** | Failure | The OS couldn't create a new process (e.g., limit reached). |
+| **Zero (`== 0`)** | Child Process | This code runs inside the newly created process. |
+| **Positive (`> 0`)** | Parent Process | This code runs in the original process; the value returned is the **Child's PID**. |
+
+---
+
+### Step-by-Step Execution
+
+1. **The Split:** The `pid = fork()` line is where the magic happens. The OS duplicates the process.
+2. **The Child's Perspective:** * The `pid` variable is `0`.
+* It enters the `else if(pid == 0)` block.
+* It prints its own ID (`getpid()`) and the ID of the process that created it (`getppid()`).
+
+
+3. **The Parent's Perspective:**
+* The `pid` variable contains the **actual PID** of the new child (e.g., 1234).
+* It enters the `else` block.
+* It prints the ID of the child it just spawned and its own parent's ID (usually the terminal or shell that ran the program).
+
+
+
+### A Subtle Detail to Watch For
+
+Because these processes run asynchronously, the output order is **non-deterministic**. Sometimes the "Parent" block prints first, and sometimes the "Child" block prints first. It depends entirely on how the OS scheduler handles them at that exact millisecond.
+
+Additionally, if the parent process finishes and exits before the child prints, the child might become an "orphan." In that case, `getppid()` might return `1` (the `init` or `systemd` process) or a "subreaper" process, depending on your OS.
+
+---
+
+This program is a classic demonstration of **process creation** in Unix-like systems using the `fork()` system call. As a programmer, you’ll recognize this as the fundamental way a single execution thread splits into two independent processes.
+
+### How it Works
+
+When `fork()` is called, the operating system creates a nearly identical copy of the calling process. From that point forward, **both** processes execute the next line of code simultaneously, but they live in separate memory spaces.
+
+Here is the breakdown of the logic:
+
+| Return Value of `fork()` | Meaning | Execution Path |
+| --- | --- | --- |
+| **Negative (`< 0`)** | Failure | The OS couldn't create a new process (e.g., limit reached). |
+| **Zero (`== 0`)** | Child Process | This code runs inside the newly created process. |
+| **Positive (`> 0`)** | Parent Process | This code runs in the original process; the value returned is the **Child's PID**. |
+
+---
+
+### Step-by-Step Execution
+
+1. **The Split:** The `pid = fork()` line is where the magic happens. The OS duplicates the process.
+2. **The Child's Perspective:** * The `pid` variable is `0`.
+* It enters the `else if(pid == 0)` block.
+* It prints its own ID (`getpid()`) and the ID of the process that created it (`getppid()`).
+
+
+3. **The Parent's Perspective:**
+* The `pid` variable contains the **actual PID** of the new child (e.g., 1234).
+* It enters the `else` block.
+* It prints the ID of the child it just spawned and its own parent's ID (usually the terminal or shell that ran the program).
+
+
+
+### A Subtle Detail to Watch For
+
+Because these processes run asynchronously, the output order is **non-deterministic**. Sometimes the "Parent" block prints first, and sometimes the "Child" block prints first. It depends entirely on how the OS scheduler handles them at that exact millisecond.
+
+Additionally, if the parent process finishes and exits before the child prints, the child might become an "orphan." In that case, `getppid()` might return `1` (the `init` or `systemd` process) or a "subreaper" process, depending on your OS.
+
+
+Note : - The reason you might see these errors is that **`fork()`**, **`getpid()`**, and **`getppid()`** are part of the **POSIX standard**, which is native to Unix-like operating systems (Linux, macOS).
+
+According to your screenshot, you are running **GCC on Windows** (likely MinGW or a similar port). Windows does not natively support the `fork()` system call, which is why the compiler gives you two types of errors:
+
+1. **Implicit Declaration (Warning):** The compiler can't find the "blueprint" (prototype) for these functions in your Windows version of `<unistd.h>`.
+2. **Undefined Reference (Error):** The linker cannot find the actual machine code for `fork()` because it doesn't exist in the Windows system libraries.
+
+---
+
+## 🚀 How to fix this
+
+As a programmer working with OS concepts like process creation, you have three main paths to get this code running:
+
+### 1. Use WSL (Windows Subsystem for Linux) — *Recommended*
+
+This is the best way to do Linux programming on a Windows machine. WSL provides a real Linux kernel where your code will work perfectly without any changes.
+
+* **Step:** Install WSL from the Microsoft Store (e.g., Ubuntu).
+* **Step:** Open the WSL terminal, install gcc (`sudo apt install build-essential`), and compile there.
+
+### 2. Use a POSIX Environment (MSYS2 or Cygwin)
+
+If you don't want to use WSL, you can use **MSYS2** or **Cygwin**. These provide a translation layer that "fakes" Linux system calls like `fork()` on Windows.
+
+* Standard MinGW (which you are likely using) is designed for native Windows apps and does **not** support `fork`.
+
+### 3. The "Windows Way" (CreateProcess)
+
+If you must stay on native Windows, you cannot use `fork()`. In Windows, process creation is handled by the `CreateProcess()` function. However, `CreateProcess()` is much more complex than `fork()` because Windows does not "clone" a process; it starts a new one from scratch.
+
+---
+
+## 🔍 A Note on your Code
+
+Your logic is actually **100% correct** for a Linux environment.
+
+* **`pid == 0`**: Successfully identifies the child.
+* **`pid > 0`**: Correcty identifies the parent.
+* **Header**: `<unistd.h>` is the correct header for these functions.
+
+The only "error" in your code is a small logical catch: In the **Parent Process** block, `getppid()` will return the PID of the shell (like Bash or PowerShell) that ran the program, not the PID of the parent process you just created. To see the Parent's own ID, you would use `getpid()`.
