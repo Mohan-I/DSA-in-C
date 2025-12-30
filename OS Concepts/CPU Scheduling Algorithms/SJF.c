@@ -41,6 +41,7 @@ int main(){
         if(current_time < at[i]){
             current_time = at[i];
         }
+        
         ct[i] = at[i] + bt[i];  
         tat[i] = ct[i] - at[i];
         wt[i] = tat[i] - bt[i];
