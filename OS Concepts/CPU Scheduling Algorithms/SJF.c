@@ -15,8 +15,6 @@ int main(){
         scanf("%d", &at[i]);
     }
 
-    
-
     while(1){
         bool swapped = false;
         for(int i = 0; i < process; i++){
@@ -43,8 +41,7 @@ int main(){
         if(current_time < at[i]){
             current_time = at[i];
         }
-        ct[i] = at[i] + bt[i];
-        
+        ct[i] = at[i] + bt[i];  
         tat[i] = ct[i] - at[i];
         wt[i] = tat[i] - bt[i];
 
@@ -53,7 +50,7 @@ int main(){
 
     
     printf("\n[Process]\t[bt]\t[at]\t[ct]\t[tat]\t[wt]\n");
-    for(int i = 0; i < process - 1; i++){
+    for(int i = 0; i < process; i++){
         printf("\np%d\t\t[%d]\t[%d]\t[%d]\t[%d]\t[%d]",i,bt[i],at[i],ct[i],tat[i],wt[i]);
     }
 }
