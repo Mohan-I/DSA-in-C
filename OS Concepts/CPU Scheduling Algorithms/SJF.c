@@ -1,57 +1,71 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 
+struct Process{
+    int id;
+    int at;
+    int bt;
+    int ct;
+    int tat;
+    int wt;
+    bool completed;
+};
+
 int main(){
-    int bt[20],wt[20],tat[20],at[20],ct[20], arrival_time = 0, process, current_time = 0;
-    printf("\n#--SJF CPU SCHEDULING ALGORITHM--#\n");
-    printf("\n[Enter Number of Processes]:\t");
-    scanf("%d", &process);
+    int n, completed = 0, current_time = 0;
+    printf("\n#-- SJF CPU SCHEDULING ALGORITHM --#\n");
+    printf("Enter Number of Processes:\t");
+    scanf("%d", &n);
 
-    for(int i = 0; i < process; i++){
-        printf("\nEnter Burst Time for process - p%d: \t",i);
-        scanf("%d", &bt[i]);
-        printf("\nEnter Arrival Time for process - p%d: \t",i);
-        scanf("%d", &at[i]);
+    struct Process p[n];
+
+    for(int i = 0; i < n; i++){
+        p[i].id = i;
+        printf("Enter Arrival Time for %d :",i);
+        scanf("%d", &p[i].at );
+        printf("Enter Burst Time for %d :",i);
+        scanf("%d", &p[i].bt );
+        p[i].completed = false;
     }
 
-    while(1){
-        bool swapped = false;
-        for(int i = 0; i < process; i++){
-        if(bt[i] > bt[i + 1]){
-            int temp =  bt[i + 1];
-            bt[i + 1] = bt[i];
-            bt[i] = temp;
-            swapped = true;
+    while(completed != n){
+        int idx = -1;
+        int min_bt = 10000;
+        for(int i =0; i < n; i++){
+            if(p[i].at <= current_time && !p[i].completed){
+                if(p[i].bt < min_bt){
+                    min_bt = p[i].bt;
+                    idx = i;
+                }
+                if(p[i].bt == min_bt){
+                    if(p[i].at < p[idx].at){
+                        idx = i;
+                    }
+                }
+            }
         }
-        if(at[i] > at[i + 1]){
-            int temp =  at[i + 1];
-            at[i + 1] = at[i];
-            at[i] = temp;
-            swapped = true;
-        }
-        } 
-        if(swapped == false) {
-            break;
+
+        if(idx != -1){
+            p[idx].ct = current_time + p[idx].bt;
+            p[idx].tat = p[idx].ct - p[idx].at;
+            p[idx].wt = p[idx].tat - p[idx].bt;
+            p[idx].completed = true;
+            current_time = p[idx].ct;
+            completed++;
+        }else{
+            current_time++;
         }
     }
 
-
-    for(int i = 0; i < process - 1; i++){
-        if(current_time < at[i]){
-            current_time = at[i];
-        }
-        
-        ct[i] = at[i] + bt[i];  
-        tat[i] = ct[i] - at[i];
-        wt[i] = tat[i] - bt[i];
-
-        current_time = ct[i];
+    float total_tat = 0, total_wt = 0;
+    printf("\n[PID]\t[AT]\t[BT]\t[CT]\t[TAT]\t[WT]\n");
+    for(int i = 0; i < n; i++){
+        printf("[p%d]\t[%d]\t[%d]\t[%d]\t[%d]\t[%d]\n", p[i].id, p[i].at, p[i].bt, p[i].ct, p[i].tat, p[i].wt);
+        total_tat += p[i].tat;
+        total_wt += p[i].wt;
     }
+    printf("\nAverage Turnaround Time: %.2f",total_tat / n);
+    printf("\nAverage Waiting Time: %.2f",total_wt / n);
 
-    
-    printf("\n[Process]\t[bt]\t[at]\t[ct]\t[tat]\t[wt]\n");
-    for(int i = 0; i < process; i++){
-        printf("\np%d\t\t[%d]\t[%d]\t[%d]\t[%d]\t[%d]",i,bt[i],at[i],ct[i],tat[i],wt[i]);
-    }
+    return 0;
 }
