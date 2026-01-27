@@ -1,9 +1,14 @@
 // AIM : TO PRINT PATTERN BELOW
-// *
-// **
-// ***
-// ****
-// *****
+
+/* [PATTERN]:
+
+*
+**
+***
+****
+*****
+
+*/
 
 #include <stdio.h>
 
