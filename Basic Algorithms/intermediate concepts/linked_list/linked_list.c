@@ -27,7 +27,7 @@ void show(){
         printf("[%d] -> ", temp->data);
         temp = temp->next;
     }
-    printf("NULL\n");c
+    printf("NULL\n");
 }
 
 int main(){
