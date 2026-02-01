@@ -1,0 +1,72 @@
+Problem Statements on Data Structures and Algorithms 
+Arrays & Strings (1–10) 
+1. Find the largest and smallest element in an array. 
+2. Reverse an array without using an extra array. 
+3. Remove duplicate elements from an array. 
+4. Rotate an array by k positions. 
+5. Merge two sorted arrays. 
+6. Find the frequency of each element in an array. 
+7. Find the second largest element in an array. 
+8. Check whether a string is a palindrome. 
+9. Count vowels and consonants in a string. 
+10. Find the longest word in a given string. 
+Searching & Sorting (11–20) 
+11. Implement Linear Search. 
+12. Implement Binary Search. 
+13. Implement Bubble Sort. 
+14. Implement Selection Sort. 
+15. Implement Insertion Sort. 
+16. Implement Merge Sort. 
+17. Implement Quick Sort. 
+18. Compare Bubble, Selection and Insertion Sort. 
+19. Implement Heap Sort. 
+20. Search element in sorted rotated array. 
+Stack (21–28) 
+21. Implement stack using array. 
+22. Implement stack using linked list. 
+23. Check balanced parentheses using stack. 
+24. Convert infix to postfix expression. 
+25. Evaluate postfix expression. 
+26. Reverse a string using stack. 
+27. Implement two stacks in one array. 
+28. Find next greater element using stack. 
+Queue & Deque (29–35) 
+29. Implement queue using array. 
+30. Implement queue using linked list. 
+31. Implement circular queue. 
+32. Implement deque. 
+33. Implement priority queue. 
+34. Simulate CPU scheduling using queue. 
+35. Reverse a queue using stack. 
+Linked List (36–45) 
+36. Implement singly linked list. 
+37. Implement doubly linked list. 
+38. Implement circular linked list. 
+39. Insert node at given position. 
+40. Delete node from linked list. 
+41. Reverse a linked list. 
+42. Find middle element of linked list. 
+43. Detect loop in linked list. 
+44. Merge two sorted linked lists. 
+45. Remove duplicate nodes from linked list. 
+Trees (46–54) 
+46. Binary tree traversals. 
+47. Find height of binary tree. 
+48. Count leaf nodes. 
+49. Implement Binary Search Tree. 
+50. Search element in BST. 
+51. Level order traversal. 
+52. Check if tree is balanced. 
+53. Find Lowest Common Ancestor. 
+54. Implement AVL tree. 
+Graphs (55–60) 
+55. Graph using adjacency matrix. 
+56. Graph using adjacency list. 
+57. Breadth First Search. 
+58. Depth First Search. 
+59. Dijkstra’s shortest path algorithm. 
+60. Kruskal’s Minimum Spanning Tree algorithm. 
+Dynamic Programming & Others (61–63) 
+61. Fibonacci using dynamic programming. 
+62. Solve 0/1 Knapsack problem. 
+63. Tower of Hanoi problem. 
