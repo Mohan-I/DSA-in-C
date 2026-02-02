@@ -22,7 +22,7 @@ int sf(int arr[],int size, int target){
 
 int main() {
     // Write C code here
-int myData[] = {10, 23, 45, 70, 82, 99}; // Must be sorted
+    int myData[] = {10, 23, 45, 70, 82, 99}; // Must be sorted
     int n = sizeof(myData) / sizeof(myData[0]);
     int target = 70;
     
