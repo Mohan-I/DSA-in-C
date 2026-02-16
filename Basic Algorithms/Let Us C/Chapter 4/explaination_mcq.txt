@@ -1,0 +1,58 @@
+## output_mcq1.c
+
+To understand this, you need to know two "Golden Rules" of C logic:
+    Truthiness: In C, 0 is False. Any non-zero value (like 4 or -1) is True.
+    Operator Precedence: && (AND) is stronger than || (OR). Think of && like multiplication and || like addition.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+## output_mcq2.c
+
+Here is the step-by-step execution:
+
+ 1. Evaluate z > 50: Since z is 12, this is False (0).
+ 2. Evaluate 5 || 0: In C, any non-zero number is considered True. So, 5 (True) OR 0 (False) results in 1 (True).
+ 3. The Assignment: Now the expression looks like if (i = 1).
+   - This does not check if i is 1.
+   - Instead, it assigns the value 1 to the variable i.
+ 4. The Final Check: The if statement then looks at the result of that assignment. Since the result is 1 (which is non-zero), C treats the entire condition as True.
+
+How to fix it
+If your intention was to check if i equals 5 or if z is greater than 50, you must use the double equals sign ==:
+in file `  if(i == 5 || z > 50)  `
+In this corrected version, 4 == 5 is False and 12 > 50 is False. False OR False is False, so it would correctly print Statement B.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+## output_mcq3.c
+
+1. w = i || j || k; (The OR chain)
+    | Expression: 4 || -1 || 0
+    | Logic: Since i (4) is non-zero, it is True. In an || (OR) operation, if the first part is True, the whole thing is True (this is called short-circuiting).
+Result: w = 1 (True).
+
+2. x = i && j && k; (The AND chain)
+    | Expression: 4 && -1 && 0
+    | Logic: For an && (AND) to be True, all parts must be non-zero.
+    | 4 && -1 is True (1).
+    | 1 && 0 is False (0).
+Result: x = 0 (False).
+
+3. y = i || j && k; (Mixing operators)
+    | Expression: 4 || (-1 && 0)
+    | Logic: Because && has higher precedence, j && k is evaluated first.
+    | -1 && 0 results in 0.
+    | Now the expression is 4 || 0.
+    | Since 4 is non-zero, the result is True.
+Result: y = 1 (True).
+
+4. z = i && j || k; (Mixing operators)
+    | Expression: (4 && -1) || 0
+    | Logic: Again, && goes first.
+    | 4 && -1 results in 1 (True && True).
+    | Now the expression is 1 || 0.
+Since one side is True, the result is True.
+Result: z = 1 (True).
+
+
+-----------------------------------------------------------------------------------------------------------------------------
