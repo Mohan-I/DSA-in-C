@@ -1,29 +1,78 @@
-    // int nums[] = {0, 1, 2, 2, 3, 0, 4, 2};  v - 2
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-    #include <stdio.h>
+#define SIZE 8
+int front = -1, rear = -1, ready_q[SIZE];
 
-    int remEl(int* nums, int target, int sizeA){
-        int k = 0 ;
-        for(int i = 0; i < sizeA; i++){
-            
-        if( nums[i] != target){
-            nums[k] = nums[i];
-            k++;
+bool isEmpty(){
+    return front == -1;
+}
+
+bool isFull(){
+    return (rear + 1) % SIZE == front;
+}
+
+void enqueue(){
+    if(isFull()){
+        printf(" OVERFLOW !");
+    }else{
+        if(front == -1) front = 0;
+        int element;
+        printf("Enter Element To add : ");
+        scanf("%d", &element);
+        rear = (rear + 1) % SIZE;
+        ready_q[rear] = element;
+    }
+}
+
+void dequeue(){
+    if(isEmpty()){
+        printf("\n UnderFlow !");
+    }else{
+        printf("Removing Element : %d", ready_q[front]);
+        front = (front + 1) % SIZE;
+    }
+}
+
+void show(){
+    if(isEmpty()){
+        printf("\n UnderFlow !");
+    }else{
+        printf("\n[ALL ELEMENTS]\n");
+        printf("\n|=-");
+        for(int i = front; i <= rear; i++){
+            printf("-=[%d]=-", ready_q[i]);
         }
-        }
+        printf("-=|\n");
+    }
+}
 
-        return k;
-    };
+int main(){
+    int choice;
+    while(1){
+        printf("\n====[   Circular Queue    ]====\n");
+        printf("\n1.Enqueue\n2.Dequeue\n3.Show\n4.Exit");;
+        printf("\nEnter Operation To perform : ");
+        scanf("%d", &choice);
 
-    int main(){
-        int nums[] = {0, 1, 2, 2, 3, 0, 4, 2};
-        int val = 2;
-        int size = sizeof(nums) / sizeof(nums[0]);
+        switch(choice){
+            case 1:
+            enqueue();
+            break;
 
-        int numsSize = remEl(nums, val, size);
+            case 2:
+            dequeue();
+            break;
 
-        printf("New Size of Array: %d \n", numsSize);
-        for(int i = 0; i < numsSize; i++){
-            printf("[%d]", nums[i]);
+            case 3:
+            show();
+            break;
+
+            case 4:
+            exit(0);
+
+            default: printf("\n==Incorrect==");
         }
     }
+}

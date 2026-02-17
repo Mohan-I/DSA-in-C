@@ -1,4 +1,5 @@
-Problem Statements on Data Structures and Algorithms 
+Problem Statements on Data Structures and Algorithms _ By Jaynish Mandal
+
 Arrays & Strings (1–10) 
 1. Find the largest and smallest element in an array. 
 2. Reverse an array without using an extra array. 
@@ -10,6 +11,7 @@ Arrays & Strings (1–10)
 8. Check whether a string is a palindrome. 
 9. Count vowels and consonants in a string. 
 10. Find the longest word in a given string. 
+
 Searching & Sorting (11–20) 
 11. Implement Linear Search. 
 12. Implement Binary Search. 
@@ -21,6 +23,7 @@ Searching & Sorting (11–20)
 18. Compare Bubble, Selection and Insertion Sort. 
 19. Implement Heap Sort. 
 20. Search element in sorted rotated array. 
+
 Stack (21–28) 
 21. Implement stack using array. 
 22. Implement stack using linked list. 
@@ -30,6 +33,7 @@ Stack (21–28)
 26. Reverse a string using stack. 
 27. Implement two stacks in one array. 
 28. Find next greater element using stack. 
+
 Queue & Deque (29–35) 
 29. Implement queue using array. 
 30. Implement queue using linked list. 
@@ -38,6 +42,7 @@ Queue & Deque (29–35)
 33. Implement priority queue. 
 34. Simulate CPU scheduling using queue. 
 35. Reverse a queue using stack. 
+
 Linked List (36–45) 
 36. Implement singly linked list. 
 37. Implement doubly linked list. 
@@ -49,6 +54,7 @@ Linked List (36–45)
 43. Detect loop in linked list. 
 44. Merge two sorted linked lists. 
 45. Remove duplicate nodes from linked list. 
+
 Trees (46–54) 
 46. Binary tree traversals. 
 47. Find height of binary tree. 
@@ -59,6 +65,7 @@ Trees (46–54)
 52. Check if tree is balanced. 
 53. Find Lowest Common Ancestor. 
 54. Implement AVL tree. 
+
 Graphs (55–60) 
 55. Graph using adjacency matrix. 
 56. Graph using adjacency list. 
@@ -66,6 +73,7 @@ Graphs (55–60)
 58. Depth First Search. 
 59. Dijkstra’s shortest path algorithm. 
 60. Kruskal’s Minimum Spanning Tree algorithm. 
+
 Dynamic Programming & Others (61–63) 
 61. Fibonacci using dynamic programming. 
 62. Solve 0/1 Knapsack problem. 
