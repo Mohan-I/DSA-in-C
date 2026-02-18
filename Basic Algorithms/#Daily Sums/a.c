@@ -1,78 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 
-#define SIZE 8
-int front = -1, rear = -1, ready_q[SIZE];
-
-bool isEmpty(){
-    return front == -1;
-}
-
-bool isFull(){
-    return (rear + 1) % SIZE == front;
-}
-
-void enqueue(){
-    if(isFull()){
-        printf(" OVERFLOW !");
-    }else{
-        if(front == -1) front = 0;
-        int element;
-        printf("Enter Element To add : ");
-        scanf("%d", &element);
-        rear = (rear + 1) % SIZE;
-        ready_q[rear] = element;
+bool isPalindrome(int x) {
+    int b = x;
+    int size = sizeof(x);
+    int arr[size], rx = 0;
+    for(int i = 0; i < size - 1; i++){
+        arr[i] = x % 10;
+        x /= 10;
     }
-}
-
-void dequeue(){
-    if(isEmpty()){
-        printf("\n UnderFlow !");
-    }else{
-        printf("Removing Element : %d", ready_q[front]);
-        front = (front + 1) % SIZE;
-    }
-}
-
-void show(){
-    if(isEmpty()){
-        printf("\n UnderFlow !");
-    }else{
-        printf("\n[ALL ELEMENTS]\n");
-        printf("\n|=-");
-        for(int i = front; i <= rear; i++){
-            printf("-=[%d]=-", ready_q[i]);
+    // int rx = arr[0] * 10;
+    for(int i = 0; i < size - 1; i++){
+        if(arr[i] == 0){
+            int temp = arr[i - 1];
+            arr[i - 1] = arr[i];
+            arr[i] = temp;
+        }else{
+        rx = rx * 10 + arr[i];
         }
-        printf("-=|\n");
+        printf("%d %d\n",arr[i],rx);
+    }
+    if(rx == b){
+        printf("true %d %d", rx, b);
+    }else{
+         printf("false%d %d", rx , b);
     }
 }
 
 int main(){
-    int choice;
-    while(1){
-        printf("\n====[   Circular Queue    ]====\n");
-        printf("\n1.Enqueue\n2.Dequeue\n3.Show\n4.Exit");;
-        printf("\nEnter Operation To perform : ");
-        scanf("%d", &choice);
+    
+    int a = 10;
+    isPalindrome(a);
 
-        switch(choice){
-            case 1:
-            enqueue();
-            break;
-
-            case 2:
-            dequeue();
-            break;
-
-            case 3:
-            show();
-            break;
-
-            case 4:
-            exit(0);
-
-            default: printf("\n==Incorrect==");
-        }
-    }
+    return 0;
 }
