@@ -1,21 +1,36 @@
 #include <stdio.h>
 
-int searchInsert(int* nums, int numsSize, int target) {
-    for(int i = 0; i <= target; i++){
-        if(nums[i] == target){
-            return i;
+int bs(int arr[], int sz, int value){
+    int low = 0;
+    int high = sz - 1;
+
+    while( low <= high){
+        int mid = low + (high - low) / 2;
+
+        if(arr[mid] == value){
+            return mid;
         }
-        else if(nums[i] > target){
-            return i;
+
+        if(arr[mid] < value){
+            low = mid + 1;
+        }else{
+            high = mid - 1;
         }
     }
+
+    return -1;
 }
 
 int main(){
-    int nums[] = {1,3,5,6}, target = 2;
+    int nums[] = {12,13,24,27,35,38,49};
+    int target = 12;
     int size = sizeof(nums) / sizeof(nums[0]);
-    int index = searchInsert(nums, size, target);
+    int result = bs(nums, size, target);
 
-    printf("%d", index);
+    if(result == -1){
+        printf("\nElement Not found !\n");
+    }else{
+        printf("\nThe Target eas found at %d", result);
+    }
     return 0;
 }
