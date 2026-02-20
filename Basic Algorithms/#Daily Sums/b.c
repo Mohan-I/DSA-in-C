@@ -1,23 +1,34 @@
 #include <stdio.h>
 
-int searchInsert(int* nums, int numsSize, int target) {
-    int i = 0;
-    while( target != nums[i]){
-        if(nums[i] == target) return i;
-        i++;
-    }
+void insSort(int arr[], int sz){
+    int i, key, j;
+    for(int i = 1 ; i < sz; i++){
+        key = arr[i];
+        j = i - 1;
 
-    if(nums[i] != target){
-        target--;
+        while( j >= 0 && arr[j] > key){
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
     }
-};
+}
+
+void writeNum(int arr[], int sz){
+    printf("\n");
+    for(int i = 0; i < sz; i++){
+        printf("[%d]",arr[i]);
+    }
+    printf("\n");
+}
 
 int main(){
-    int nums = [1,3,5,6], target = 5;
+    int nums[] = {29,34,40,10,30,42,32,34,23,22,23,43};
     int size = sizeof(nums) / sizeof(nums[0]);
-    int a = searchInsert(nums[],size,target);
 
-    printf("%d", a);
+    writeNum(nums, size);
+    insSort(nums, size);
+    writeNum(nums, size);
 
     return 0;
 }
