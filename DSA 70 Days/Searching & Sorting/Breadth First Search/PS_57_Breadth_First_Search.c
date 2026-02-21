@@ -75,7 +75,7 @@ int main(){
     int output = BFS(nums, size , target);
 
     if(output == -1){
-        printf("%sElement Not Found !%s",YEL,NRM);
+        printf("\n%sElement Not Found !%s",YEL,NRM);
     }else{
         printf("\nElement found %s[%d]%s at %s[%d]%s", GRN,nums[output],NRM,GRN, output,NRM);
     }
