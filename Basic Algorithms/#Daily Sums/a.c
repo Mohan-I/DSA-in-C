@@ -1,36 +1,36 @@
 #include <stdio.h>
-#include <stdbool.h>
 
-bool isPalindrome(int x) {
-    int b = x;
-    int size = sizeof(x);
-    int arr[size], rx = 0;
-    for(int i = 0; i < size - 1; i++){
-        arr[i] = x % 10;
-        x /= 10;
-    }
-    // int rx = arr[0] * 10;
-    for(int i = 0; i < size - 1; i++){
-        if(arr[i] == 0){
-            int temp = arr[i - 1];
-            arr[i - 1] = arr[i];
-            arr[i] = temp;
-        }else{
-        rx = rx * 10 + arr[i];
-        }
-        printf("%d %d\n",arr[i],rx);
-    }
-    if(rx == b){
-        printf("true %d %d", rx, b);
-    }else{
-         printf("false%d %d", rx , b);
-    }
+int pickUp(int stck, int pcks){
+    int remaining = stck - pcks;
+    return remaining;
 }
 
 int main(){
-    
-    int a = 10;
-    isPalindrome(a);
+    int nums;
+
+    printf("Enter Number of Players : ");
+    scanf("%d", &num);
+
+    // Player Count
+    int pl[num], a = 0;
+    for(int i = 1; i < nums; i++){
+        pl[i - 1] = i;
+        i++;
+    }
+
+    int sticks = 21, pick;
+
+    while(1){
+        printf("\nIt's Player %d 's turn", pl[a]);
+        printf("\nPick Up the MatchSticks in between (1 - 3) : ");
+        sticks = pickUp(sticks, pick);
+
+        if(sticks == 1){
+            printf("Player %d has been lost !", pl[a + 1]);
+            break;
+        }
+        
+    }
 
     return 0;
 }

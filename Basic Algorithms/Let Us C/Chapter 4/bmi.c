@@ -7,9 +7,9 @@ int main(){
     printf("Enter Body Mass Index (BMI): \n");
     printf("\nEnter Weight in kg : ");
     scanf("%f", &wt);
-    printf("\nEnter Height in ft : ");
+    printf("\nEnter Height in cm : ");
     scanf("%f", &ht);
-    bmi = wt/(ht * ht);
+    bmi = wt/(ht * ht) * 10000;
 
     printf("\n--------------------------------\n");
     printf("\nYou are at %f -> " , bmi);
@@ -26,20 +26,18 @@ int main(){
         printf("Ideal");
     }
     else if(bmi < 24.9){
-        printf("Overweight");
+        printf("Normal");
     }
     else if(bmi < 25.9){
-        printf("Obese");
+        printf("Overweight");
     }
     else if(bmi < 30.9){
         printf("Obese");
     }
-    else if(bmi < 40){
+    else if(bmi > 40){
         printf("Morbidly Obese");
     }
     printf(" Category");
 
     return 0;
 }
-
-// UNDER PROGRESS

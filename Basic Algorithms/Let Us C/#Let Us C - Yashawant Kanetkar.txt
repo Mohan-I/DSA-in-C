@@ -1,1 +1,62 @@
 As per 19th Edition
+
+Chapter 1 Imp Concepts
+
+Types of C Constants
+C constants can be divided into two major categories:
+(a) Primary Constants
+(b) Secondary Constants
+
+
+        +=================+
+        |    C Constants  |
+        +=================+
+                |   
+    +--------------------------------------+
+    |                                      |
++-------------------+               +---------------------+
+| Primary Constants |               | Secondary Constants |
++-------------------+               +---------------------+
+        |                                       |
+        |                                       |
++-----------------------+               +---------------+
+|  Integer Constant     |               |    Pointer    |
+|  Real Constant        |               |    Structure  |
+|  Character Constant   |               |    Union      |                
+|                       |               |    Enum, etc. |
+|                       |               |    Array      |
++-----------------------+               +---------------+
+
+
+
+Type Conversion in Assignments
+
+It may so happen that the type of the expression and the type of the
+variable on the left-hand side of the assignment operator may not
+be same. In such a case the value of the expression is promoted or
+demoted depending on the type of the variable on left-hand side of
+=.
+For example, consider the following assignment statements.
+int i ;
+float b ;
+i = 3.5 ;
+b = 30 ;
+
+Here, in the assignment statement some operands are ints whereas
+others are floats. As we know, during evaluation of the expression
+the ints would be promoted to floats and the result of the
+expression would be a float. But when this float value is assigned
+to s it is again demoted to an int and then stored in s.
+Observe the results of the arithmetic statements shown in Figure
+1.7. It has been assumed that k is an integer variable and a is a real
+variable. 
+                                    
+Arithmetic Instruction | Result |Arithmetic Instruction | Result
+k = 2 / 9                   0       a = 2 / 9               0.0
+k = 2.0 / 9                 0       a = 2.0 / 9             0.2222
+k = 2 / 9.                  0       a = 2 / 9.0             0.2222
+k = 2.0 / 9.0               0       a = 2.0 / 9.0           0.2222
+k = 9 / 2                   4       a = 9 / 2               4.0
+k = 9.0 / 2                 4       a = 9.0 / 2             4.5
+k = 9 / 2.0                 4       a = 9 / 2.0             4.5
+k = 9.0 / 2.0               4       a = 9.0 / 2.0           4.5 
