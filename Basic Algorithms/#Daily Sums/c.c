@@ -1,34 +1,22 @@
 #include <stdio.h>
 
-int insSort(int arr[], int sz){
-    int i, key, j;
-    for(int i = 1; i < sz; i++){
-        key = arr[i];
-        j = i - 1;
-
-        while( j >= 0 && arr[j] > key){
-            arr[j] = key;
-            j = j - 1;
+int climbStairs(int n) {
+    int a = 0;
+    if(i != n){
+        for(int i = 1; i <=n ; i++){
+            n = n - 1;
+            a++;
         }
-        arr[j + 1] = arr[j];
-    }
-}
+        for(int i = 1){
 
-int writeNum(int arr[] , int sz){
-    printf("\n");
-    for(int i = 0; i < sz; i++){
-        printf("[%d]",arr[i]);
+        }
     }
-    printf("\n");
-}
-
-int  main(){
-    int nums[] = {92,83,77,46,56,65,24,13,32,42,15};
-    int size = sizeof(nums) / sizeof(nums[0]);
     
-    writeNum(nums, size);
-    insSort(nums, size);
-    writeNum(nums, size);
+};
 
-    return 0;
+int main(){
+    int t;
+    printf("Enter The Number to Find out its steps: ");
+    scanf("%d", &t);
+    int r = climbStairs(t);
 }

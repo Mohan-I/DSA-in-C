@@ -15,3 +15,10 @@ int main(){
     fclose(ftr);
     return 0;
 }
+
+/*
+    Which function should you use?
+    fgetc: To read character by character.
+    fgets: To read line by line (Safest for text).
+    fscanf: To read formatted data (like reading a list of numbers).
+*/ 
