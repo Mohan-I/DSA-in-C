@@ -1,29 +1,31 @@
 #include <stdio.h>
 
-void cal3sum(int arr[] ,int size,int total){
-    int left = 0;
-    int right = total - 1;
-    int mid = left + 1;
-    while(left <= right){
-        if(arr[left] + arr[mid] + arr[right] == total){
-        printf("[%d, %d, %d]", arr[left], arr[mid], arr[right]);
+int majorE(int * arr, int sz){
+    int candidate = 0;
+    int count = 0;
+
+    for(int i = 0; i < sz; i++){
+        if(count == 0){
+            candidate = arr[i];
+            count = 1;
         }
-        if(arr[left] < arr[mid] < arr[right]){
-        mid++;
-        }else{
-        left++;
-        right--;
-        mid = left + 1;
+        else if(arr[i] == candidate){
+            count++;
+        }
+        else{
+            count--;
+        }
     }
-    }
+
+    return candidate;
 }
 
-// Three Sum
 int main(){
-    int nums[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+    int nums[] = {1,2,3,4,5,6,7,8,9,1,0,7,1,7,7,7,7,1,2,1,7,7,7,7,7,7,7,7,3,1,4,1,5,16,1,7,1,8,1,9,7,7,2,0};
     int size = sizeof(nums) / sizeof(nums[0]);
-    int sum = 25;
 
-    cal3sum(nums, size, sum);
+    int mNum = majorE(nums, size);
+
+    printf("%d", mNum);
     return 0;
 }
