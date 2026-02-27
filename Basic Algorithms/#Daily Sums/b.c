@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 int main(){
-    FILE *ftr = fopen("file.txt","r");
-    if(ftr == NULL){
-        printf("FILE NOT FOUND !!");
-        return -1;
+    for(int i = 0; i <= 18; i++){
+        for(int j = 0; j <= 18; j++){
+            if(i % 2 == 0 && j % 2 == 0){
+                printf("+");
+            }
+            else{
+                printf("-");
+            }
+        }
+        printf("\n");
     }
 
-    char buffer[12];
-    while(fgets(buffer,12,ftr)){
-        printf("%s",buffer);
-    }
-
-    fclose(ftr);
     return 0;
 }
