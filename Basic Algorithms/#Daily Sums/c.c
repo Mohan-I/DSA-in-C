@@ -1,22 +1,23 @@
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
-int climbStairs(int n) {
-    int a = 0;
-    if(i != n){
-        for(int i = 1; i <=n ; i++){
-            n = n - 1;
-            a++;
-        }
-        for(int i = 1){
+int main() {
 
-        }
+    int num1, num2;
+    char s[20];
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
+    scanf("%d %d", &num1, &num2);
+    scanf("%s", &s);
+
+    int size = strlen(s);
+    char r[size];
+
+    for(int i = 1; i <= size; i++){
+        r[i] = s[size - i];
     }
-    
-};
 
-int main(){
-    int t;
-    printf("Enter The Number to Find out its steps: ");
-    scanf("%d", &t);
-    int r = climbStairs(t);
+    printf("\n%c", r[num2]);
+    return 0;
 }

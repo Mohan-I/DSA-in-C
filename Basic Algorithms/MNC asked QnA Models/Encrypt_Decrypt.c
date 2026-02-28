@@ -1,41 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-void encrypt(char data[20]){
+int encrypt(char s[], int size){
 
+    // Print Encrypted String
+    for(int i = 0; i < size ; i++){
+        if(s[i] == ' '){
+            s[i] = s[i];
+        }else{
+            s[i] = s[i] + 3;
+        }
+        printf("%c", s[i]);
+    }
 }
 
-void decrypt(char[20]){
-
+int decrypt(char s[], int size){
+    
+    // Print Decrypted String
+    for(int i = 0; i < size ; i++){
+        if(s[i] == ' '){
+            s[i] = ' ';
+        }else{
+            s[i] = s[i] - 3;
+        }
+        printf("%c", s[i]);
+    }
 }
 
 int main(){
-    int choice;
-    char text[20];
-    while(1){
-        printf("\n [----Crypt Block----] \n");
-        printf("\n1.Encypt Data\n2.Decrypt Data\n3.Exit Program \n");
-        printf("\nEnter Your Operation :\t");
-        scanf("%d", &choice);
+    char s[] = "I am good !";
+    int size = strlen(s);
 
-        switch(choice){
-            case 1:
-            printf("\n Encrypt Text \n:-\t");
-            scanf("%s", &text);
-            encrypt(text);
-            break;
-
-            case 2:
-            printf("\n Encrypt Text \n:-\t");
-            scanf("%s", &text);
-            decrypt(text);
-            break;
-
-            case 3:
-            exit(0);
-
-            default: printf("[ Incorrect Choice ]");
-        }
+    // Print Noraml String
+    for(int i = 0; i < size ; i++){
+        printf("%c", s[i]);
     }
+    printf("\n");
+    encrypt(s, size);
+    printf("\n");
+    decrypt(s, size);
+    
+    return 0;
 }

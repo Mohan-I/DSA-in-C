@@ -16,7 +16,7 @@ To understand why the result is 9, you have to look at how a professional develo
 
 ### 1. The Trap: `^` is NOT "Power"
 In mathematics (and some languages like Python or Excel), `^` means "to the power of." 
-However, in **C, C++, Java, and JavaScript**, the `^` symbol is the **Bitwise XOR operator**.
+However, in 'C, C++, Java, and JavaScript', the `^` symbol is the **Bitwise XOR operator**.
 If you wanted to do  in C, you would need to use `pow(10, 2)` from the `<math.h>` library.
 
 ### 2. The Logic: How the computer sees it
