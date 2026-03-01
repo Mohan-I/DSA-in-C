@@ -1,18 +1,24 @@
 #include <stdio.h>
-#include <string.h>
-
-int main(){
-    int i = 0;
-    char s[20];
-    if(fgets(s, sizeof(s), stdin) != NULL){
-            printf("*");
-            i++;
+    #include <stdbool.h>
+    int isNextGen(int n){
+        int sum, arr[];
+        while( n > 0){
+            arr[0a] = n % 10;
+        }
     }
 
-    int size = strlen(s);
-    for(int a = 0; a < size ; a++){
-        printf("%c", s[a]);
+    bool is_happy_number(int n) {
+        // Write your logic here
+        
+        
+        return false;
     }
 
-    return 0;
-}
+    int main() {
+        int n = 2;
+
+        bool result = is_happy_number(n);
+        printf(result ? "true\n" : "false\n");
+
+        return 0;
+    }

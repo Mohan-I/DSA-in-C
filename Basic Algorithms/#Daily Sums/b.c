@@ -2,10 +2,9 @@
 
 int main(){
     char c;
-    for(int i = 0; i < 255; i++){
-        
-    c = i;
-    printf("%d -> %c \n", i, c);
+    for(int i = 0; i < 255; i++){  
+        c = i;
+        printf("%d -> %c \n", i, c);
     };
 
     return 0;
@@ -14,15 +13,16 @@ int main(){
 /*
 Decimal,Character Code,Name,What it actually does
 
-Decimal,Abbr,Name,"Real-World Use Case (The ""Expert"" View)"
-0,NUL,Null Character,The most important in C. Marks the end of a string (\0).
-1,SOH,Start of Header,Used in low-level networking to signal the start of data.
-2,STX,Start of Text,"Signals that the ""Header"" is over and the message is starting."
-3,ETX,End of Text,Signals the message is finished.
-4,EOT,End of Transmission,"Tells the receiver ""I'm hanging up the phone now."""
-5,ENQ,Enquiry,"Used to ask the other computer: ""Are you there?"""
-6,ACK,Acknowledge,"The ""Thumbs Up"" signal in networking. ""I got your data!"""
-7,BEL,Bell (\a),Triggers a system beep. Used in CLI to alert the user.
+Decimal,    Abbr,   Name,                                               "Real-World Use Case (The ""Expert"" View)"
+---------------------------------------------------------------------------------------------------------------------------------------------------
+0,          NUL,    Null Character,The most important in C.             Marks the end of a string (\0).
+1,          SOH,    Start of Header,                                    Used in low-level networking to signal the start of data.
+2,          STX,    Start of Text,                                      "Signals that the ""Header"" is over and the message is starting."
+3,          ETX,    End of Text,                                        Signals the message is finished.
+4,          EOT,    End of Transmission,                                "Tells the receiver ""I'm hanging up the phone now."""
+5,          ENQ,    Enquiry,                                            "Used to ask the other computer: ""Are you there?"""
+6,          ACK,    Acknowledge,                                        "The ""Thumbs Up"" signal in networking. ""I got your data!"""
+7,          BEL,    Bell (\a),                                          Triggers a system beep. Used in CLI to alert the user.
 8,BS,Backspace (\b),Moves the cursor back one spot and deletes the character.
 9,HT,Horizontal Tab (\t),Aligns text into columns (what happens when you hit 'Tab').
 10,LF,Line Feed (\n),The Newline. Moves the cursor down to the next row.

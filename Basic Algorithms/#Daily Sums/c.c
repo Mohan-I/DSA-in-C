@@ -1,23 +1,35 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <stdlib.h>
+#define GRY "\x1b[30m"
+#define RED "\x1b[31m"
+#define GRN "\x1b[32m"
+#define NRM "\x1b[0m"
 
-int main() {
+void insert_sort(int arr[], int size){
+    for(int i = 1; i < size; i++){
+        int key = arr[i];
+        int j = i - 1;
 
-    int num1, num2;
-    char s[20];
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
-    scanf("%d %d", &num1, &num2);
-    scanf("%s", &s);
-
-    int size = strlen(s);
-    char r[size];
-
-    for(int i = 1; i <= size; i++){
-        r[i] = s[size - i];
+        while(j >= 0 && arr[j] > key){
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
     }
+}
 
-    printf("\n%c", r[num2]);
+void writeNum(int arr[], int size){
+    for(int i = 0; i < size; i++){
+        printf("[%d]",arr[i]);
+    }
+    printf("\n");
+}
+
+int main(){
+    int unsrt_arr[] = {3,2,1,4,5,6,7,9,8,0};
+    int size = sizeof(unsrt_arr) / sizeof(unsrt_arr[0]);
+
+    writeNum(unsrt_arr, size);
+    insert_sort(unsrt_arr, size);
+    writeNum(unsrt_arr, size);
     return 0;
 }
