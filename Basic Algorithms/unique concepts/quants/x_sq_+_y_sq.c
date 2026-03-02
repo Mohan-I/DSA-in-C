@@ -3,7 +3,7 @@
 int main(){
     int x, y, z;
 
-    printf("The Value of Z :");
+    printf("The Value of z :");
     scanf("%d", &z);
 
     for(int x = -4 ; x < 100; x++){
