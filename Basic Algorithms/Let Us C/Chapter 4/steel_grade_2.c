@@ -9,7 +9,7 @@ The grades are as follows:
 
 Grade is 10 if all three conditions are met
 Grade is 09 if conditions (1) and (2) are met
-Grade is 08 if conditions (2) and (3) are met
+Grade is 08 if conditions (2) and (2) are met
 Grade is 07 if conditions (1) and (3) are met
 Grade is 06 if only one condition is met
 Grade is 05 if none of the conditions are met 
@@ -18,9 +18,10 @@ Write a program, which will require the user to give valuues of hardness, carbon
 */ 
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
 int main(){
+    
     float hardness, carbon, tensile;
     printf("\nEnter the hardness level : ");
     scanf("%f", &hardness);
@@ -31,18 +32,23 @@ int main(){
     
     printf("\n--------------\n");
 
-    if(hardness > 50 && carbon < 0.7 && tensile > 5600){
+    bool hardnessTrue = (hardness > 50);
+    bool carbonRtTrue = (carbon< 0.7);
+    bool tensile_True = (tensile > 5600);
+
+    if(hardnessTrue && carbonRtTrue && tensile_True){
         printf("Grade 10");
-    }else if(hardness > 50 && carbon < 0.7){
+    }else if(hardnessTrue && carbonRtTrue){
         printf("Grade 09");
-    }else if(carbon < 0.7 && tensile > 5600){
+    }else if(carbonRtTrue && tensile_True){
         printf("Grade 08");
-    }else if(hardness > 50 && tensile > 5600){
+    }else if(carbonRtTrue && tensile_True){
         printf("Grade 07");
-    }else if(hardness > 50 || carbon < 0.7 || tensile > 5600){
+    }else if(hardnessTrue || carbonRtTrue || tensile_True){
         printf("Grade 06");
     }else{
         printf("Grade 05");
     }
+
     return 0;
 }

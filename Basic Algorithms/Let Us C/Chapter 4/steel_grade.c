@@ -9,7 +9,7 @@ The grades are as follows:
 
 Grade is 10 if all three conditions are met
 Grade is 09 if conditions (1) and (2) are met
-Grade is 08 if conditions (2) and (3) are met
+Grade is 08 if conditions (2) and (2) are met
 Grade is 07 if conditions (1) and (3) are met
 Grade is 06 if only one condition is met
 Grade is 05 if none of the conditions are met 
