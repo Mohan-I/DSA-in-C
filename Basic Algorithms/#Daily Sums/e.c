@@ -1,29 +1,29 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-int main(){
-    
-    char s[] = "III";
-    int size = strlen(s);
-    int  sum = 0;
-    for(int i = 0; i < size; i++){
-        if(s[i] == 'I'){
-            sum += 1;
-        } else if(s[i] == 'V'){
-            sum += 5;
-        } else if(s[i] == 'X'){
-            sum += 10;
-        } else if(s[i] == 'L'){
-            sum += 50;
-        } else if(s[i] == 'C'){
-            sum += 100;
-        } else if(s[i] == 'D'){
-            sum += 500;
-        } else if(s[i] == 'M'){
-            sum += 1000;
+int findLargest(int sz, int div, int arr[]){
+    if(div > sz) return 0;
+    int maxSum = 0, currentSum = maxSum;
+    for(int j = 0; j < sz; j++){
+        maxSum = 0;
+        for(int i = j; i < div; i++){
+            maxSum += arr[i];
+        }
+        if(maxSum > currentSum){
+            currentSum = maxSum;
         }
     }
 
-    printf("%d", sum);
+    printf("%d", currentSum);
+    
+}
+
+int main(){
+    int nums[] = {1,2,3,0,9,1,1};
+    int size = sizeof(nums) /sizeof(nums[0]);
+    int div = 3;
+
+    findLargest(size, div, nums);
+
     return 0;
 }
