@@ -1,29 +1,86 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int findLargest(int sz, int div, int arr[]){
-    if(div > sz) return 0;
-    int maxSum = 0, currentSum = maxSum;
-    for(int j = 0; j < sz; j++){
-        maxSum = 0;
-        for(int i = j; i < div; i++){
-            maxSum += arr[i];
-        }
-        if(maxSum > currentSum){
-            currentSum = maxSum;
-        }
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+void insertNode(int data){
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode -> data = data;
+    newNode -> next = head;
+    head = newNode;
+
+    printf("\nThe Node %d has been Created !", data);
+}
+
+
+void removeNode(int key){
+    struct Node* temp = head, *prev = NULL;
+
+    if(temp != NULL && temp->data == key){
+        head = temp->next;
+        free(temp);
+        printf("\nThe Node %d has been deleted !", key);
+        return;
     }
 
-    printf("%d", currentSum);
-    
+    while(temp != NULL && temp->data != key){
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL){
+        printf("\nThe Node does not exist !");
+    }
+
+    prev->next = temp->next;
+    printf("\nThe Node %d has been deleted !", key);
+}
+
+void showNode(){
+    struct Node* temp = head;
+    printf("\n|=-");
+    while(temp != NULL){
+        printf("-=[%d]=-", temp->data);
+        temp = temp->next;
+    }
+    printf("-=|\n");
 }
 
 int main(){
-    int nums[] = {1,2,3,0,9,1,1};
-    int size = sizeof(nums) /sizeof(nums[0]);
-    int div = 3;
+    int choice, element;
+    while(1){
+    printf("\n[=====LINKED LIST=====]");
+    printf("\n\n1.Insert\n2.Remove\n3.Show\n4.Exit");
+    printf("\nEnter the Operation to perform :");
+    scanf("%d",&choice);
 
-    findLargest(size, div, nums);
+    switch(choice){
+        case 1:
+        printf("Enter element to Insert :");
+        scanf("%d", &element);
+        insertNode(element);
+        break;
 
-    return 0;
+        case 2:
+        printf("Enter element to Remove :");
+        scanf("%d", &element);
+        removeNode(element);
+        break;
+
+        case 3:
+        printf("\n[All Nodes Present in the list]\n");
+        showNode();
+        break;
+
+        case 4:
+        exit(0);
+
+        default: printf("\nIncorrect Choice !");
+    }
+}
 }
