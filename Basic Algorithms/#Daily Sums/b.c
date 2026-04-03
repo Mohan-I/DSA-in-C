@@ -1,22 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void printArray(int arr[], int N){
+    for(int i = 0; i < N; i++){
+        printf("[%d]", arr[i]);
+    }
+    printf("\n");
+}
+
 int main(){
-    int num, found = 0;
-    printf("\nEnter Number To Find Perfect Square Root : ");
-    scanf("%d", &num);
+    int nums[] = {2,13,22,344,55,6,66,27,8,90,1,123,42,54,322,323,43};
+    int size = sizeof(nums) / sizeof(nums[0]);
+    int newN[size];
 
-    for(int i = 1; i < num; i++){
-        if(i * i == num){
-            printf("The Sqaure Root of [Number - %d] is [%d]",num, i);
-            found = 1;
-            break;
-        }
+    printArray(nums, size);
+
+    for(int i = 0; i < size; i++){
+        newN[(nums[i]/ 100) % 10]++;
     }
 
-    if(found == 0){
-        printf("The Perfect Square Root Not Found !");
-    }
+    printf("\n[%d]\n", 182 % 10);
 
-    return 0;
+    printArray(newN, size);
 }
