@@ -1,21 +1,29 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
+
+void writeNums(int nums[], int size){
+    for(int i = 0; i < size; i++){
+        printf("[%d]", nums[i]);
+    }
+}
+
+void moveZeros(int nums[], int size){
+    int lastNum = 0;
+    for(int i = 0; i < size; i++){
+        if(nums[i] != 0){
+            int temp = nums[lastNum];
+            nums[lastNum] = nums[i];
+            nums[i] = temp;
+            lastNum++;
+        }
+    }
+}
 
 int main(){
-    int n1, n2, rem, oct, p;
-        printf("Enter any Number : \t");
-        scanf("%d", &n1);
-        n2 = n1;
-        p = oct = 0;
+    int nums[] = {1,3,0,1,0,2,3,0,0,0,9,5,4,0};
+    int size = sizeof(nums)/ sizeof(nums[0]);
 
-        while(n1 > 0){
-            rem = n1 % 8;
-            n1 = n1/8;
-            oct = oct + rem * pow(10.0, p);
-            p++;
-        }
-
-        printf("\n The octal equivalent of %d is %d\n", n2, oct);
-
+    moveZeros(nums, size);
+    writeNums(nums, size);
     return 0;
 }

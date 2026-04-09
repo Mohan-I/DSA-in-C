@@ -22,4 +22,6 @@ int main(){
     printf("\n[%d]\n", 182 % 10);
 
     printArray(newN, size);
+
+    return 0;
 }
