@@ -1,42 +1,30 @@
-/*
-Two Sum - Pair with given Sum
-Last Updated : 26 Jul, 2025
-Given an array arr[] of n integers and a target value, check if there exists a pair whose sum equals the target. This is a variation of the 2-Sum problem.
-
-Examples: 
-
-Input: arr[] = [0, -1, 2, -3, 1], target = -2
-Output: true
-Explanation: There is a pair (1, -3) with the sum equal to given target, 1 + (-3) = -2.
-
-Input: arr[] = [1, -2, 1, 0, 5], target = 0
-Output: false
-Explanation: There is no pair with sum equals to given target.
-*/ 
-
 #include <stdio.h>
-#include <stdbool.h>
-
-bool checkSum(int nums[], int numsSize, int T){
-    for(int i = 0; i < numsSize; i++){
-        for(int j = i + 1; j < numsSize; j++){
-            if(nums[i] + nums[j] == T){
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
+#include <string.h>
+#include <ctype.h>
 
 int main() {
-    int arr[] = {0, -1, 2, -3, 1};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int target = -2;
+    char firstName[50], lastName[50];
+    scanf("%s", firstName);
+    scanf("%s", lastName);
+    char username[100];
+    char initials[3];
+  
+  	int size1 = strlen(firstName);  	
+  	int size2 = strlen(lastName);
 
-    bool ans = checkSum(arr, size, target);
+  
+  	// Create initials (uppercase first letters)
+		initails[0] = toupper(firstName[0]);		
+    initails[1] = toupper(lastName[0]);
+  	initials[2] = '\0';
 
-    printf("%s", ans ? "true" : "false");
+    // Create username (lowercase, no space)
+		for(int i = 0; i < size1; i++) firstName[i] = tolower(firstName[i]);		
+    for(int i = 0; i < size2; i++) lastName[i] = tolower(lastName[i]);
+		strcpy(username, firstName);		
+  	strcat(username, lastName);
 
+    // Print results
+    printf("Username: %s\nInitials: %s", username, initials);
     return 0;
 }
