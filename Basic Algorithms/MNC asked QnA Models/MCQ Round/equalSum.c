@@ -1,0 +1,1 @@
+// You have an array [1,2,3,4]. Can you split in two subsets with equal sum ?

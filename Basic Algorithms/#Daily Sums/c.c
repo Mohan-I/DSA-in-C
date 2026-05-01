@@ -1,30 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
+// You have an array [1,2,3,4]. Can you split in two subsets with equal sum ?
+// test case : [1,2,3,4] Solution: (1,4) (2,3)
+// test case : [1,4,4,1] Solution: (1,4) (4,1)
+// test case : [1,0,3,4] Solution: (1,3) (0,4)
 
-void selectionSort(int Arr[], int size){
-    for(int i = 0; i < size; i++){
-        for(int j = i + 1; j < size; j++){
-            if(Arr[j] < Arr[i]){
-                int temp = Arr[i];
-                Arr[i] = Arr[j];
-                Arr[j] = temp;
+#include <stdio.h>
+
+void equalSums(int nums[], int N){
+    for(int i = 0; i < N; i++){
+        for(int j = i + 1; j < N; j++){
+            if(arr[i] + arr[j] == sum){
+                
             }
         }
     }
 }
 
-void printNums(int Arr[], int size){
-    for(int i = 0; i < size; i++){
-        printf("[%d]", Arr[i]);
-    }
-}
-
 int main(){
-    int nums[] = {2,5,3,4,1,7,9,8};
-    int size = sizeof(nums) / sizeof(nums[0]);
-
-    selectionSort(nums, size);
-    printNums(nums, size);
-
+    int arr[] = {1,2,3,4};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    equalSums(arr, size);
     return 0;
 }
