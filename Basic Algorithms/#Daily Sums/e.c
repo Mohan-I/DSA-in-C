@@ -1,31 +1,20 @@
 #include <stdio.h>
-#include <conio.h>
 
+int main(){
+    int nums[] = {2,0,0,1,2,0,3,0,0,0,4,3,0,2,1,5,0,0,2,0,3,4,0,5};
+    int size = sizeof(nums) / sizeof(nums[0]);
 
-int main() {
-    char binary[25], ch;
+    int lastNum = 0, i;
 
-    printf("Enter Binary Number (Press Enter When Completed): ");
+    while(nums[i] != 0){
+        nums[lastNum++] = nums[i];
+        nums[i] = 0;
 
-    while(1){
-        ch = getch();
-        if(ch == '\r') break;
-
-        printf("%c", ch);
-        binary[n++] = ch;
+        if(nums[i] == nums[size - 1]) break;
     }
 
-    binary[n] = '\0';          // CRITICAL: Null terminate the string
-    printf("\n");
-
-    int decimal = 0;
-
-    for(int i = 0; binary[i] != '\0'; i++ ){
-        int num = binary[i] - '0';
-
-        decimal = (decimal << 1) | num;
+    for(int i = 0; i < size; i++){
+        printf("[%d]", nums[i]);
     }
-
-    printf("Decimal Value : %d", decimal);
     return 0;
 }
