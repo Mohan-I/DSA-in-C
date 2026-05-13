@@ -12,7 +12,6 @@ void reverse(int nums[], int start, int end){
 
 void rotate_N(int nums[], int size, int shift){
     int k = shift % size;
-
     reverse(nums, 0, size - 1);
     reverse(nums, 0, k - 1);
     reverse(nums, k, size - 1);
