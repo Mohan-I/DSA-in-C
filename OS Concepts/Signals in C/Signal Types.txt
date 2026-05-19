@@ -1,0 +1,100 @@
+Signal Name
+
+Description
+
+Default Behaviour
+---------------------------------------------------
+
+SIGABRT
+
+Abnormal termination (abort) by the program.
+
+Program terminates
+
+---------------------------------------------------
+
+SIGFPE
+
+Floating-point exception (e.g., division by zero or overflow).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGILL
+
+Illegal instruction (e.g., invalid opcode).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGINT
+
+Interrupt signal (sent when Ctrl+C is pressed by the user).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGSEGV
+
+Segmentation fault (invalid memory access).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGTERM
+
+Termination signal (request to terminate the process).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGKILL
+
+Kill signal (forceful termination of a process).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGBUS
+
+Bus error (e.g., misaligned memory access).
+
+Program terminates
+
+---------------------------------------------------
+
+SIGQUIT
+
+Quit signal (similar to SIGINT but causes core dump).
+
+Program terminates (Core dump)
+
+---------------------------------------------------
+
+SIGCHLD
+
+Child process terminated or stopped.
+
+No action (handled by parent)
+
+---------------------------------------------------
+
+SIGCONT
+
+Continue a stopped process.
+
+Process resumed
+
+---------------------------------------------------
+
+SIGTSTP
+
+Terminal stop signal (sent by pressing Ctrl+Z).
+
+Process Stop
