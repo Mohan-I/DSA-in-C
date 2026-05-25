@@ -13,19 +13,18 @@
 
 */
 
-// Online C compiler to run C program online
 #include <stdio.h>
-#define size 8
-int main() {
-    // Write C code here
-    
-    for(int i = 1; i <= size; i++){
-        for(int j = 1; j <= size; j++){
-            if(i == 1 || i == 2 || i == 3 || j == 1 || j == 2 || j == 3 || i == size - 1 || j == size - 1){
+#define SIZE 7
+
+int main(){
+    for(int i = 0; i <= SIZE; i++){
+        for(int j = 0; j <= SIZE; j++){
+            if(i >= 3 && i != 6 && j >= 4){
+                printf(" ");
+            }else{
                 printf("*");
             }
-        }printf("\n");
+        }
+        printf("\n");
     }
-
-    return 0;
 }
