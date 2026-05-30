@@ -1,25 +1,11 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(){
-    char text[20], newtext[20];
-    printf("[w] :");
-    
-    scanf("%19s", text);
+    int sticks = 21;
 
-    int j = 0;
-    for(int i = 0; text[i] != '\0' ; i++){
-        if(text[i] == 'a' ||text[i] == 'e' ||text[i] == 'i' ||text[i] == 'o' ||text[i] == 'u'){
-            printf("Removed Vowel : %c \n", text[i]);
-        }else{
-            printf("Constant stored: %c \n", text[i]);
-            newtext[j] = text[i];
-            j++;
-        }
+    while(1){
+        printf("\n[====MATCH STICK GAME====]\n");
+        printf("\n1.Pick\n2.P")
     }
-
-    newtext[j] = '\0';
-
-    printf("%s", newtext);
-    return 0;
 }
