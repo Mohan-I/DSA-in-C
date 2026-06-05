@@ -1,0 +1,46 @@
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# macros in c
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In C programming, a macro is a named fragment of code that is replaced by its defined value or expression during the preprocessing stage before actual compilation begins. Macros are declared using the #define preprocessor directive. They consume no memory at runtime because they are expanded into inline text before the compiler evaluates the source code.Types of Macros
+
+1. Object-Like Macros
+These are simple identifiers representing a constant value or a static expression. By convention, they are written in uppercase.Syntax: #define MACRO_NAME value
+Example:c
+#define PI 3.14159
+#define MAX_BUFFER 1024
+
+2. Function-Like Macros
+These accept parameters and mimic real functions, but expand directly into inline code. They provide basic generic behaviors because they do not enforce strict data types.
+Syntax: #define MACRO_NAME(arg1, arg2) (expression)Example:c#define SQUARE(x) ((x) * (x))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+(Note: There must be no space between the macro name and the opening parenthesis during definition.)
+
+3. Multi-Line MacrosMacros can span multiple lines by adding a backslash (\) at the end of each line continuation.
+Example:c
+#define PRINT_VALUES(x, y) do { \
+    printf("X: %d\n", x); \
+    printf("Y: %d\n", y); \
+} while(0)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Overflow & UnderFlow Conditions
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if(rev > INT_MAX/10 || (rev == INT_MAX / 10 && pop > 7)) return 0; if(rev < INT_MIN/10 || (rev == INT_MIN / 10 && pop < -8)) return 0;
+This code prevents integer overflow and underflow when reversing a number. It ensures that multiplying your current result by 10 and adding the next digit won't exceed standard 32-bit integer limits.
+🔢 The Standard Limits
+INT_MAX is 2,147,483,647
+INT_MIN is -2,147,483,648
+INT_MAX / 10 is 214,748,364
+
+🛑 Overflow Conditions (INT_MAX)
+The first line checks if the next step will exceed the upper limit:
+rev > INT_MAX/10: Multiplying by 10 will automatically cause an overflow.
+rev == INT_MAX/10: The base numbers match exactly.
+pop > 7: Adding a digit greater than 7 will overflow.
+
+📉 Underflow Conditions (INT_MIN)The second line checks if the next step will drop below the lower limit:
+rev < INT_MIN/10: Multiplying by 10 will automatically cause an underflow.
+rev == INT_MIN/10: The base numbers match exactly.
+pop < -8: Adding a negative digit below -8 will underflow.
