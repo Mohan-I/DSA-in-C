@@ -6,6 +6,6 @@ int main(){
 
     while(1){
         printf("\n[====MATCH STICK GAME====]\n");
-        printf("\n1.Pick\n2.P")
+        printf("\n1.Pick\n")
     }
 }
