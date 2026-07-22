@@ -1,28 +1,56 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
-int main(){
-    srand(time(NULL));
-    int guessed_Num = rand() % 100;
+char reverse(char word[50]){
+    int left = 0;
+    int right = strlen(word) - 1;
 
-    int choice, choice_count = 0;
-    while(1){
-        printf("\n[=== Guess the Number Game ===] || Current Choice Count : %d", choice_count);
-        printf("\nEnter Your Guess Number :");
-        scanf("%d", &choice);
-
-        if(choice < guessed_Num){
-            printf("The Number is Lower Than Guessed Num");
-        }else if(choice > guessed_Num){
-            printf("The Number is Greater Than Guessed Num");
-        }else if(choice == guessed_Num){
-            printf("\n{========= You Got it right in %d guesses =========}", choice_count);
-            break;
-        }
-
-        choice_count++;
+    while(left < right){
+        char temp = word[left];
+        word[left] = word[right];
+        word[right] = temp;
+        left++;
+        right--;
     }
 
+    return word;
+
+}
+
+int palindrome(int count){
+    int num = 1;
+    for(int i = 1; i < count; i++){
+        num = i * num;
+    }
+    return num;
+}
+
+int checkDiff(char word[50], char revs[50]){
+    int size = strlen(word), count = 0;
+    for(int i = 0; i < size; i++){
+        if(word[i] != revs[i]){
+            count++;
+        }
+    }
+    printf("\n%s %s\n", word, revs);
+    int outcomeDiff = (count);
+    return outcomeDiff;
+}
+
+int main(){
+
+    int testcases;
+    scanf("%d", &testcases);
+
+    while(testcases--){
+
+        char word[50], revs[50];
+        scanf("%49s", word); 
+        strcpy(revs, word);
+        reverse(revs);
+        
+        int diff = checkDiff(word, revs);
+        printf("%d \n", diff);
+    }
     return 0;
 }
