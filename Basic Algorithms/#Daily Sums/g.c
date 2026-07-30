@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h> 
+#include <stdbool.h>
 
 #define SIZE 10
 int rear = -1, front = -1, ready_q[SIZE];
@@ -13,16 +13,16 @@ bool isEMPTY(){
     return front == -1;
 }
 
-void insert(){
+void insert_item(){
     if(isFULL()){
-        printf("\n====[The Queue is Full]====");
+        printf("\n[------ THE QUEUE IS FULL ------]\n\n");
     }else{
         int element;
-        printf("\n Enter The Value To Add : ");
+        printf("ENTER ELEMENT TO ADD : ");
         scanf("%d", &element);
         if(rear == -1){
-            rear = 0;
             front = 0;
+            rear = 0;
         }else{
             rear = (rear + 1) % SIZE;
         }
@@ -32,47 +32,47 @@ void insert(){
 
 void remove_item(){
     if(isEMPTY()){
-        printf("\n====[The Queue is Empty]====");
+        printf("\n[------ THE QUEUE IS EMPTY ------]\n\n");
     }else{
-        printf("\n==The Element [%d] is removed", ready_q[front]);
+        printf("\n The Element [%d] is been removed !", ready_q[front]);
         ready_q[front] = 0;
         front = (front + 1) % SIZE;
     }
 }
 
-void last_item(){
+void peek_item(){
     if(isEMPTY()){
-        printf("\n====[The Queue is Empty]====");
+        printf("\n[------ THE QUEUE IS EMPTY ------]\n\n");
     }else{
-        printf("\n==The Last Element Inserted -> [%d]", ready_q[rear]);
+        printf("\n The Element [%d] has been last Inserted !\n\n", ready_q[front]);
     }
 }
 
 void show_items(){
     if(isEMPTY()){
-        printf("\n====[The Queue is Empty]====");
+        printf("\n[------ THE QUEUE IS EMPTY ------]\n\n");
     }else{
-        printf("\n|======All Element=====|");
-        printf("\n\n|=-");
+        printf("\n[------ ALL ITEMS IN THE QUEUE ! ------]\n\n");
+        printf("\n|=-");
         for(int i = 0; i < SIZE; i++){
             printf("-=[%d]=-", ready_q[i]);
         }
-        printf("-=|\n\n");
-        printf("\n[ FRONT : %d | REAR : %d ]\n\n", front, rear);
+        printf("-=|\n");
+        printf("| FRONT : %d | REAR : %d | \n\n", front, rear);
     }
 }
 
 int main(){
     int choice;
     while(1){
-        printf("\n=====[ CIRCULAR QUEUE ]=====\n");
-        printf("\n 1. INSERT \n 2. REMOVE \n 3. LAST ITEM \n 4. SHOW ALL \n 5. EXIT");
-        printf("\n ENTER THE OPERATION TO BEGIN :\t");
+        printf("\n=====[ CIRCULAR QUEUE ]====");
+        printf("\n1. INSERT \n2. REMOVE \n3. PEEK \n4. SHOW \n5.EXIT");
+        printf("\nENTER THE OPERATION TO PERFORM :");
         scanf("%d", &choice);
 
         switch(choice){
             case 1:
-            insert();
+            insert_item();
             break;
 
             case 2:
@@ -80,7 +80,7 @@ int main(){
             break;
 
             case 3:
-            last_item();
+            peek_item();
             break;
 
             case 4:
@@ -90,12 +90,9 @@ int main(){
             case 5:
             exit(0);
 
-            default: 
-            printf("\n====[ Incorrect Operation ]====\n");
-
+            default: printf("\n[------- [ INCORRECT CHOICE ! ] --------]\n\n");
         }
     }
 
     return 0;
 }
-
