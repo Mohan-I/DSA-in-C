@@ -51,7 +51,7 @@ void removeNode(int key){
 
     prev->next = temp->next;
     printf("\nNode with value %d deleted.", key);
-}
+}   
 
 int main(){
     int choice, element;
