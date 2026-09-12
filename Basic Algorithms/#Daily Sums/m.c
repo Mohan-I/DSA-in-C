@@ -1,25 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-struct Node{
-    int data;
-    struct* Node;
-}
+int main() {
+    int arr[] = {10, 20, 30};
+    int i = 0;
 
-struct Node *head = NULL;
+    // Post-increment: reads arr[0] (10), then increments i to 1
+    printf("Post-increment item: %d\n", arr[i++]); 
+    printf("Current i: %d\n", i); // Output: 1
 
-void InsertNode(){
+    i = 0; // Reset i
 
-}
+    // Pre-increment: increments i to 1 first, then reads arr[1] (20)
+    printf("Pre-increment item: %d\n", arr[++i]);  
+    printf("Current i: %d\n", i); // Output: 1
 
-void RemoveNode(){
-
-}
-
-int main(){
-    int choice;
-    while(1){
-        printf("\n==================={Linked_List}=======================");
-        printf("\n1.Push Node \n2.De")
-    }
+    return 0;
 }
