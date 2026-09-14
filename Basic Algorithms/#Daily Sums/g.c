@@ -1,62 +1,68 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#define SIZE 10
-int top = -1, stack[SIZE];
+#include <time.h>
+#include <string.h>
+int comp_score, user_score = 0;
 
-bool isFull(){
-    return top == SIZE;
+const char *choice_name(int shoot_num){
+    if(shoot_num == 1) return "Stone";
+    if(shoot_num == 2) return "Paper";
+    if(shoot_num == 3) return "Scissor";
 }
 
-bool isEmpty(){
-    return top == -1;
+int comp_shoot(){
+    return (rand() % 3) + 1;
 }
 
-void push(){
-    if(isFull()){
-        printf("\n THE STACK IS FULL");
+void shoot(int user_choice){
+    int comp_choice = comp_shoot();
+
+    printf("\n You Choice : %s [VS] Computer's Choice : %s", choice_name(user_choice), choice_name(comp_choice));
+
+    if(user_choice == comp_choice){
+        printf("\n It's a Draw");
+    }else if((user_choice == 1 && comp_choice == 3) ||
+             (user_choice == 2 && comp_choice == 1) || 
+             (user_choice == 3 && comp_choice == 2) ){
+                printf("\n User Wins !!!");
+                user_score++;
     }else{
-        int element;
-        printf("\n Enter Element to add : ");
-        scanf("%d", &element);
-        stack[top++] = element;
+        printf("\n Computer Wins !!!");
+        comp_score++;
     }
 }
 
-void pop(){
-    if(isEmpty()){
-        printf("\n ")
-    }
-}
+
 int main(){
+    srand(time(NULL));
     int choice;
     while(1){
-        printf("\n\n[======= STACK OPERATIONS ========]");
-        printf("\n1.Push \n2.Pop \n3.Peek \n4.Show All \n5.Exit");
-        printf("\n Enter Your Choice");
+        printf("\n[========== ROCK PAPER SCISSOR GAME =========]");
+        printf("\n[===== USER SCORE : %d || COMP SCORE : %d =====]", user_score, comp_score);
+        printf("\n 1. Stone \n 2. Paper \n 3. Scissor \n 4. Exit Game");
+        printf("\n [ Enter Your Choice ] : ");
         scanf("%d", &choice);
 
         switch(choice){
+
             case 1:
-            push();
+            shoot(1);
             break;
-            
+
             case 2:
-            push();
+            shoot(2);
             break;
-            
+
             case 3:
-            push();
+            shoot(3);
             break;
-            
+
             case 4:
-            push();
-            break;
-            
-            case 5:
             exit(0);
             
-            default: printf("[ INCORRECT SYNTAX ]");
+            default : printf("\n \\\\\\ Invalid \\\\\\ ");
         }
+
+        printf("\n-----------------------------------------\n\n");
     }
 }
