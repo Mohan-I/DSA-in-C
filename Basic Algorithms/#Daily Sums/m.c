@@ -1,18 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    int arr[] = {10, 20, 30};
-    int i = 0;
+struct Node{
+    int data;
+    struct Node *next;
+};
 
-    // Post-increment: reads arr[0] (10), then increments i to 1
-    printf("Post-increment item: %d\n", arr[i++]); 
-    printf("Current i: %d\n", i); // Output: 1
+struct Node* head = NULL;
 
-    i = 0; // Reset i
+void insertNode(int value){
+    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+    newNode -> data = value;
+    newNode -> next = head;
+    head = newNode;
 
-    // Pre-increment: increments i to 1 first, then reads arr[1] (20)
-    printf("Pre-increment item: %d\n", arr[++i]);  
-    printf("Current i: %d\n", i); // Output: 1
+    printf("\n The New Node [%d] Has Been Created !", value);
+}
 
-    return 0;
+void displayNodes(){
+    struct Node* temp = head;
+    printf("\n [ All Nodes ] \n |-");
+    while(temp != NULL){
+        printf("-[%d]=>", temp -> data);
+        temp = temp -> next;
+    }
+    printf("-|\n");
+}
+
+int main(){
+    int choice, element;
+    while(1){
+        printf("\n\nLinked List");
+        printf("\n1. Insert \n2. Display \n Enter Operation to Perform : ");
+        scanf("%d", &choice);
+
+        switch(choice){
+            case 1:
+            printf("\n Enter Elemnt To Add : ");
+            scanf("%d", &element);
+            insertNode(element);
+            break;
+
+            case 2:
+            displayNodes();
+            break;
+
+        }
+    }
 }
