@@ -1,50 +1,40 @@
+/*
+    Problem statement : We need to make change for n coins (for eg. 39, 45) of denominations {1,2,5,10} using fewest number of coins.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node{
-    int data;
-    struct Node *next;
-};
-
-struct Node* head = NULL;
-
-void insertNode(int value){
-    struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-    newNode -> data = value;
-    newNode -> next = head;
-    head = newNode;
-
-    printf("\n The New Node [%d] Has Been Created !", value);
-}
-
-void displayNodes(){
-    struct Node* temp = head;
-    printf("\n [ All Nodes ] \n |-");
-    while(temp != NULL){
-        printf("-[%d]=>", temp -> data);
-        temp = temp -> next;
+void provideChange(int p){
+    printf("\nThe Total Change");
+    int ten = 0, five = 0, two = 0, one = 0;
+    while(p!=0){
+        if(p >= 10){
+            printf("[10]");
+            p = p - 10;
+            ten++;
+        } else if(p >= 5){
+            printf("[5]");
+            p = p - 5;
+            five++;
+        }else if(p >= 2){
+            printf("[2]");
+            p = p - 2;
+            two++;
+        }else if(p >= 1){
+            printf("[1]");
+            p = p - 1;
+            one++;
+        }
     }
-    printf("-|\n");
+    printf("\nCoins : [ 10 * %d ]==[ 5 * %d ]==[ 2 * %d ]==[ 1 * %d ] ", ten, five, two, one);
 }
 
 int main(){
-    int choice, element;
-    while(1){
-        printf("\n\nLinked List");
-        printf("\n1. Insert \n2. Display \n Enter Operation to Perform : ");
-        scanf("%d", &choice);
+    int price;
+    printf("Enter Number of Change Required : ");
+    scanf("%d", &price);
 
-        switch(choice){
-            case 1:
-            printf("\n Enter Elemnt To Add : ");
-            scanf("%d", &element);
-            insertNode(element);
-            break;
-
-            case 2:
-            displayNodes();
-            break;
-
-        }
-    }
+    provideChange(price);
+    return 0;
 }
