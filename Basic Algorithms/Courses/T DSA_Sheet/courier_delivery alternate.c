@@ -16,35 +16,28 @@ Each courier works independently and continuously. In a given total time $T$, a 
 Find the smallest time $T$ where the sum of deliveries completed by all couriers is greater than or equal to `TD ( | T /time[i]) >= TD)`.
 
 */ 
-
-#include <stdio.h>
-
-int find(int N, int TD, int time[]){
-    long long T = 1;
-
-    while(1){
-        long long sum = 0;
-        for(int i = 0; i < N; i++){
-            sum += (T / time[i]);
-        }
-        if(sum >= TD){
-            return T;
-        }
-        T++;
+long long countDeliveries(int time[], int n, long long T) {
+    long long total = 0;
+    for (int i = 0; i < n; i++) {
+        total += (T / time[i]);
     }
-    return T;
+    return total;
 }
 
-int main(){
-    long long N, t_deliveries;
-    if( scanf("%lld", &N) != 1) return 0;
-    if( scanf("%lld", &t_deliveries) != 1) return 0;
+long long minTimeForDeliveries(int time[], int n, int target) {
+    long long low = 1;
+    // Maximum possible time would be if the slowest courier does all deliveries alone
+    long long high = (long long)*max_element(time, time + n) * target; // Or find max manually
+    long long ans = high;
 
-    int time[N];
-    for(int i = 0; i < N; i++){
-        scanf("%lld", &time[i]);
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+        if (countDeliveries(time, n, mid) >= target) {
+            ans = mid;        // Valid time, try to find a smaller one
+            high = mid - 1;
+        } else {
+            low = mid + 1;    // Too short, increase time
+        }
     }
-    long long r_t = find(N, t_deliveries, time);
-    printf("%lld", r_t);
-    return 0;
+    return ans;
 }
