@@ -5,7 +5,7 @@ int binaryS(int arr[], int size, int T){
     int low = 0;
     int high = size;
 
-    while(low < high){
+    while(low <= high){
         int mid = low + (high - low) / 2;
         if(arr[mid] == T){
             return mid;
