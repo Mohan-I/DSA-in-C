@@ -1,0 +1,8 @@
+# Ignore C file executables
+a.exe
+
+# Ignore Temporary Files
+*.tmp
+
+# Ignore Temporary Locked Files
+~$*
